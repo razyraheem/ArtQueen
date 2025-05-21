@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Product Image</title>
+  <style>
+    body {
+      margin: 0;
+      background: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: sans-serif;
+      gap: 20px;
+    }
+    img {
+      max-width: 90vw;
+      max-height: 70vh;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .copied-msg {
+      color: green;
+      font-weight: bold;
+      font-size: 14px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <img id="productImage" src="" alt="Product Image" />
+  <button id="copyBtn">Copy Link</button>
+  <div class="copied-msg" id="copiedMsg">Link copied to clipboard!</div>
+
+  <script>
+    // Function to get URL param 'img'
+    function getImgFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      const imgPath = params.get('img');
+      return imgPath ? imgPath : 'bouquet/product1.jpg'; // default image if no param
+    }
+
+    // Set the image src based on URL parameter
+    const productImage = document.getElementById('productImage');
+    const imgSrc = getImgFromURL();
+    productImage.src = imgSrc;
+
+    // Copy link button
+    const copyBtn = document.getElementById('copyBtn');
+    const copiedMsg = document.getElementById('copiedMsg');
+
+    copyBtn.addEventListener('click', () => {
+      const url = window.location.href;
+      navigator.clipboard.writeText(url).then(() => {
+        copiedMsg.style.display = 'block';
+        setTimeout(() => {
+          copiedMsg.style.display = 'none';
+        }, 2000);
+      }).catch(() => {
+        alert('Failed to copy the link. Please copy it manually.');
+      });
+    });
+  </script>
+
+</body>
+</html>
