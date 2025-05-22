@@ -14,13 +14,16 @@
       height: 100vh;
       font-family: sans-serif;
       gap: 20px;
+      text-align: center;
     }
+
     img {
       max-width: 90vw;
       max-height: 70vh;
       border-radius: 15px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
+
     button {
       padding: 10px 20px;
       font-size: 16px;
@@ -32,9 +35,11 @@
       box-shadow: 0 3px 6px rgba(0,0,0,0.2);
       transition: background-color 0.3s ease;
     }
+
     button:hover {
       background-color: #45a049;
     }
+
     .copied-msg {
       color: green;
       font-weight: bold;
@@ -46,23 +51,23 @@
 <body>
 
   <img id="productImage" src="" alt="Product Image" />
-  <button id="copyBtn">Copy Link</button>
+  <button id="copyBtn">Copy & Share on Instagram</button>
   <div class="copied-msg" id="copiedMsg">Link copied to clipboard!</div>
 
   <script>
-    // Function to get URL param 'img'
+    // Get image path from URL parameter
     function getImgFromURL() {
       const params = new URLSearchParams(window.location.search);
       const imgPath = params.get('img');
-      return imgPath ? imgPath : 'bouquet/product1.jpg'; // default image if no param
+      return imgPath ? imgPath : 'bouquet/product1.jpg'; // default image
     }
 
-    // Set the image src based on URL parameter
+    // Set image
     const productImage = document.getElementById('productImage');
     const imgSrc = getImgFromURL();
     productImage.src = imgSrc;
 
-    // Copy link button
+    // Copy and redirect
     const copyBtn = document.getElementById('copyBtn');
     const copiedMsg = document.getElementById('copiedMsg');
 
@@ -70,9 +75,12 @@
       const url = window.location.href;
       navigator.clipboard.writeText(url).then(() => {
         copiedMsg.style.display = 'block';
+
         setTimeout(() => {
           copiedMsg.style.display = 'none';
-        }, 2000);
+          // Redirect to Instagram profile
+          window.location.href = 'https://www.instagram.com/editz_aura/';
+        }, 1000);
       }).catch(() => {
         alert('Failed to copy the link. Please copy it manually.');
       });
