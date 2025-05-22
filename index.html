@@ -2,215 +2,148 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Artize</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ArtQueen.io</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
   <div class="heading">
-  <img src="logo.png" alt="logo" width="110" />
-  <div class="navi">
-    <a href="https://www.instagram.com/editz_aura/" target="_blank" class="instagram-link">
-      <div class="follow-me">
-        <p>Follow me on</p>
-        <img src="https://img.icons8.com/fluency/48/instagram-new.png" alt="Instagram" />
-      </div>
-    </a>
+    <img class="logo-img" src="logo.png" alt="ArtQueen.io Logo" />
+    <button id="toggle-dark">🌙 Dark Mode</button>
   </div>
-</div>
-
 </header>
 
-<div class="product">
-  <div class="product1" style="background-image: url('product1.jpg');">
-  <a href="product1.html?img=product1.jpg" target="_blank"><h3>Order Now</h3></a>
+<div class="product" id="product-container">
+  <!-- Products will be inserted here by JavaScript -->
+</div>
+
+<!-- Add Image Button (only for you) -->
+<script>
+  const isAdmin = location.hash === '#admin'; // Use #admin in the URL to show the button
+
+  if (isAdmin) {
+    const addButton = document.createElement('button');
+    addButton.textContent = '➕ Add Image';
+    addButton.style.position = 'fixed';
+    addButton.style.bottom = '20px';
+    addButton.style.right = '20px';
+    addButton.style.padding = '10px 20px';
+    addButton.style.fontSize = '16px';
+    addButton.style.border = 'none';
+    addButton.style.backgroundColor = '#333';
+    addButton.style.color = '#fff';
+    addButton.style.borderRadius = '6px';
+    addButton.style.cursor = 'pointer';
+    addButton.style.zIndex = '1000';
+
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = 'image/*';
+    fileInput.style.display = 'none';
+
+    addButton.onclick = () => fileInput.click();
+    fileInput.onchange = (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const div = document.createElement('div');
+          div.className = 'product1';
+          div.style.backgroundImage = `url('${e.target.result}')`;
+          div.innerHTML = `<a href="#" target="_blank"><h3>New Upload</h3></a>`;
+          document.getElementById('product-container').prepend(div);
+        };
+        reader.readAsDataURL(file);
+      }
+    };
+
+    document.body.appendChild(addButton);
+    document.body.appendChild(fileInput);
+  }
+</script>
+
+<footer style="background: #222; color: #eee; text-align: center; padding: 20px 10px; font-family: Arial, sans-serif; margin-top: 40px;">
+  <p>&copy; 2025 ArtQueen.io | All rights reserved.</p>
+  <div style="margin: 10px 0;">
+    <h3>Follow Us</h3><br>
+    <div>
+      <a href="https://facebook.com/yourpage" target="_blank" style="color: #eee; margin: 0 10px; text-decoration: none;">Facebook</a>
+      <a href="https://instagram.com/editz_aura" target="_blank" style="color: #eee; margin: 0 10px; text-decoration: none;">Instagram</a>
+      <a href="https://youtube.com/@yourpage" target="_blank" style="color: #eee; margin: 0 10px; text-decoration: none;">Youtube</a>
+    </div>
   </div>
-  <div class="product1" style="background-image: url('bouquet/product100.webp');">
-  <a href="product1.html?img=bouquet/product100.webp" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product101.jpg');">
-  <a href="product1.html?img=bouquet/product101.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product102.jpg');">
-  <a href="product1.html?img=bouquet/product102.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product103.jpg');">
-  <a href="product1.html?img=bouquet/product103.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product104.jpg');">
-  <a href="product1.html?img=bouquet/product104.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product105.jpg');">
-  <a href="product1.html?img=bouquet/product105.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product106.jpg');">
-  <a href="product1.html?img=bouquet/product106.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product107.jpg');">
-  <a href="product1.html?img=bouquet/product107.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product108.jpg');">
-  <a href="product1.html?img=bouquet/product108.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product109.jpg');">
-  <a href="product1.html?img=bouquet/product109.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product110.jpg');">
-  <a href="product1.html?img=bouquet/product110.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product111.jpg');">
-  <a href="product1.html?img=bouquet/product111.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product112.jpg');">
-  <a href="product1.html?img=bouquet/product112.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product113.jpg');">
-  <a href="product1.html?img=bouquet/product113.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product114.jpg');">
-  <a href="product1.html?img=bouquet/product114.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product115.jpg');">
-  <a href="product1.html?img=bouquet/product115.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product116.jpg');">
-  <a href="product1.html?img=bouquet/product116.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product117.jpg');">
-  <a href="product1.html?img=bouquet/product117.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product118.jpg');">
-  <a href="product1.html?img=bouquet/product118.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product119.jpg');">
-  <a href="product1.html?img=bouquet/product119.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product120.jpg');">
-  <a href="product1.html?img=bouquet/product120.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product121.jpg');">
-  <a href="product1.html?img=bouquet/product121.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product122.jpg');">
-  <a href="product1.html?img=bouquet/product122.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product123.jpg');">
-  <a href="product1.html?img=bouquet/product123.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product124.jpg');">
-  <a href="product1.html?img=bouquet/product124.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product125.jpg');">
-  <a href="product1.html?img=bouquet/product125.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product126.jpg');">
-  <a href="product1.html?img=bouquet/product126.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product127.jpg');">
-  <a href="product1.html?img=bouquet/product127.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product128.jpg');">
-  <a href="product1.html?img=bouquet/product128.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product129.jpg');">
-  <a href="product1.html?img=bouquet/product129.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product130.jpg');">
-  <a href="product1.html?img=bouquet/product130.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product131.jpg');">
-  <a href="product1.html?img=bouquet/product131.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product132.jpg');">
-  <a href="product1.html?img=bouquet/product132.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product133.jpg');">
-  <a href="product1.html?img=bouquet/product133.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product134.jpg');">
-  <a href="product1.html?img=bouquet/product134.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product135.jpg');">
-  <a href="product1.html?img=bouquet/product135.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product136.jpg');">
-  <a href="product1.html?img=bouquet/product136.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product137.jpg');">
-  <a href="product1.html?img=bouquet/product137.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product138.jpg');">
-  <a href="product1.html?img=bouquet/product138.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product139.jpg');">
-  <a href="product1.html?img=bouquet/product139.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product140.jpg');">
-  <a href="product1.html?img=bouquet/product140.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product141.webp');">
-  <a href="product1.html?img=bouquet/product141.webp" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product142.jpg');">
-  <a href="product1.html?img=bouquet/product142.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product143.jpg');">
-  <a href="product1.html?img=bouquet/product143.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product144.jpg');">
-  <a href="product1.html?img=bouquet/product144.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product145.jpg');">
-  <a href="product1.html?img=bouquet/product145.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product146.webp');">
-  <a href="product1.html?img=bouquet/product146.webp" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product147.jpg');">
-  <a href="product1.html?img=bouquet/product147.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product148.jpg');">
-  <a href="product1.html?img=bouquet/product148.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product149.jpg');">
-  <a href="product1.html?img=bouquet/product149.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product150.jpg');">
-  <a href="product1.html?img=bouquet/product150.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product151.jpg');">
-  <a href="product1.html?img=bouquet/product151.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product152.jpg');">
-  <a href="product1.html?img=bouquet/product152.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product153.jpg');">
-  <a href="product1.html?img=bouquet/product153.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product154.jpg');">
-  <a href="product1.html?img=bouquet/product154.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product155.jpg');">
-  <a href="product1.html?img=bouquet/product155.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product156.jpg');">
-  <a href="product1.html?img=bouquet/product156.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product157.jpg');">
-  <a href="product1.html?img=bouquet/product157.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product158.jpg');">
-  <a href="product1.html?img=bouquet/product158.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
-<div class="product1" style="background-image: url('bouquet/product159.jpg');">
-  <a href="product1.html?img=bouquet/product159.jpg" target="_blank"><h3>Order Now</h3></a>
-</div>
 
+</footer>
 
-</div>
+<script>
+  // Dark mode toggle
+  const toggleBtn = document.getElementById('toggle-dark');
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    toggleBtn.textContent = document.body.classList.contains('dark') ? '☀️ Light Mode' : '🌙 Dark Mode';
+  });
+
+  //product container
+  const productContainer = document.getElementById('product-container');
+
+  const firstProduct = document.createElement('div');
+  firstProduct.className = 'product1';
+  firstProduct.style.backgroundImage = "url('product1.jpg')";
+  firstProduct.innerHTML = `<a href="product1.html?img=product1.jpg" target="_blank"><h3>Order Now</h3></a>`;
+  productContainer.appendChild(firstProduct);
+
+  for (let i = 100; i <= 160; i++) {
+    const div = document.createElement('div');
+    div.className = 'product1';
+    let ext = 'jpg';
+    if ([100, 141, 146].includes(i)) ext = 'webp';
+    const imgPath = `bouquet/product${i}.${ext}`;
+    div.style.backgroundImage = `url('${imgPath}')`;
+    div.innerHTML = `<a href="product1.html?img=${imgPath}" target="_blank"><h3>Order Now</h3></a>`;
+    productContainer.appendChild(div);
+  }
+
+   //pop up message
+  window.addEventListener('DOMContentLoaded', () => {
+    if (!sessionStorage.getItem('popupShown')) {
+      const popup = document.createElement('div');
+      popup.style.position = 'fixed';
+      popup.style.top = '0';
+      popup.style.left = '0';
+      popup.style.width = '100%';
+      popup.style.height = '100%';
+      popup.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+      popup.style.display = 'flex';
+      popup.style.justifyContent = 'center';
+      popup.style.alignItems = 'center';
+      popup.style.zIndex = '9999';
+
+      const content = document.createElement('div');
+      content.style.backgroundColor = '#fff';
+      content.style.padding = '20px';
+      content.style.borderRadius = '10px';
+      content.style.textAlign = 'center';
+      content.style.maxWidth = '300px';
+
+      content.innerHTML = `
+        <p><strong>Welcome!</strong></p>
+        <p>Select the product, click "Order Now", and copy the link to share on Instagram.</p>
+        <button id="popup-ok" style="padding: 8px 15px; background-color: #333; color: #fff; border: none; border-radius: 5px; cursor: pointer;">OK</button>
+      `;
+
+      popup.appendChild(content);
+      document.body.appendChild(popup);
+      sessionStorage.setItem('popupShown', 'true');
+      document.getElementById('popup-ok').addEventListener('click', () => {
+        popup.style.display = 'none';
+      });
+    }
+  });
+
+</script>
 
 </body>
 </html>
