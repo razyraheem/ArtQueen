@@ -11,43 +11,26 @@ body {
   padding: 20px;
 }
 
-/* Dark mode styles */
-body.dark {
-  background: #141f33;
-  color: #eee;
-}
-
 header {
   margin-bottom: 20px;
-}
-
-.heading {
   background-color: #d0efff;
   display: flex;
   align-items: center;
-  gap: 400px;
+  gap: 100px;
   border-radius: 10px;
+  justify-content: center;
+}
 
+.heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;; /* optional: gives space between logo and button */
+    padding: 10px 20px;
 }
 
 .logo-img {
   width: 100px;
   height: auto;
-}
-
-#toggle-dark {
-  padding: 10px 15px;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  background: #333;
-  color: white;
-  border-radius: 6px;
-  transition: background-color 0.3s;
-}
-
-#toggle-dark:hover {
-  background: #555;
 }
 
 .product {
@@ -103,21 +86,18 @@ footer {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 400px;
-  background: white;
+  background-color: white;
   padding: 20px;
   border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
   z-index: 1000;
+  max-width: 90%;
+  text-align: center;
 }
+
 
 /* Mobile Fix */
 @media (max-width: 600px) {
-  .popup {
-    width: 90%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
 
   .heading{
     gap:100px;
