@@ -2,41 +2,112 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
+
 body {
   font-family: Arial, sans-serif;
-  background: #add8e6;
+  background: #0e1518;
   color: #222;
   transition: background-color 0.3s, color 0.3s;
-  padding: 20px;
+
 }
 
 header {
-  margin-bottom: 20px;
-  background-color: #d0efff;
+  margin-bottom: 40px;
+  background-color: #202d33;
   display: flex;
   align-items: center;
-  gap: 100px;
-  border-radius: 10px;
-  justify-content: center;
+  justify-content: space-between;
+  height: 100px;
 }
 
 .heading {
-    display: flex;
-    align-items: center;
-    justify-content: center;; /* optional: gives space between logo and button */
-    padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* optional: gives space between logo and button */
+  padding: 10px 20px;
+  gap: 10px;
+  color: rgb(245, 235, 202);
 }
 
 .logo-img {
-  width: 100px;
+  width: 50px;
   height: auto;
+  background-color: rgb(243, 239, 214);
+  border-radius: 100px;
 }
+
+.contact {
+  color: rgb(36, 35, 33);
+  margin-right: 30px;
+  cursor: pointer;
+  display: flex;
+  gap: 30px;
+}
+
+.contact a {
+  text-decoration: none;
+  font-size: 19px;
+  color: rgb(106, 106, 104);
+  transition: transform (0.3) ease;
+}
+
+.contact a:hover {
+  color: wheat;
+  transform: scale(1.0);
+}
+
+.navi {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  background-color: #202d33;
+  padding: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-top: -40px;
+}
+
+.navi a {
+  position: relative;
+  overflow: hidden;
+  color: #5e491b;
+  text-decoration: none;
+  background-color: rgb(210, 207, 198);
+  padding: 10px 20px;
+  border-radius: 20px;
+  transition: background-color 0.3s, transform 0.2s;
+  font-weight: bold;
+  z-index: 1;
+}
+
+.navi a:hover {
+  color: rgb(210, 207, 198);
+  background-color: #5e491b;
+}
+
+.item {
+  text-align: center;
+  color: rgb(222, 217, 191);
+  background-color: rgb(50, 48, 45);
+  padding: 20px;
+  margin: 100px;
+  margin-bottom: 20px;
+  border-radius: 40px;
+  font-size: 20px;
+}
+
 
 .product {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 20px;
+  padding: 20px;
 }
 
 .product1 {
@@ -46,28 +117,28 @@ header {
   background-position: center;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
+
 .product1:hover {
   transform: scale(1.05);
 }
 
 .product1 a {
   position: absolute;
-  bottom: 10px;
+  bottom: 0px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   color: white;
-  padding: 8px 14px;
+  padding: 8px 140px;
   text-decoration: none;
   font-weight: bold;
-  border-radius: 5px;
   font-size: 16px;
   transition: background-color 0.3s;
 }
@@ -77,9 +148,68 @@ header {
   color: #333;
 }
 
-footer {
-  border-radius: 10px;
+
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-left: auto;
+  margin-top: 30px;
 }
+
+.social-links a {
+  color: #fffdfd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(9, 9, 9, 0.05);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Remove the generic hover so it doesn't override */
+.social-links a:hover {
+  transform: scale(1.15);
+}
+
+/* Individual background and shadow colors on hover */
+.social-links a[href*="youtube.com"]:hover {
+  background: #FF0000;
+  color: #fff;
+  box-shadow: 0 0 15px #5d5b5b;
+}
+
+.social-links a[href*="wa.me"]:hover {
+  background: #1DBF73;
+  color: #fff;
+  box-shadow: 0 0 15px #535353;
+}
+
+.social-links a[href*="instagram.com"]:hover {
+  background: linear-gradient(135deg, #d42222, #9e8426, #570477);
+  color: #fff;
+  box-shadow: 0 0 15px #535353;
+}
+
+.social-links a[href*="facebook.com"]:hover {
+  background: #2f1688;
+  color: #fff;
+  box-shadow: 0 0 15px #535353;
+}
+
+
+.icon {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
 
 .popup {
   position: fixed;
@@ -89,17 +219,8 @@ footer {
   background-color: white;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   max-width: 90%;
   text-align: center;
-}
-
-
-/* Mobile Fix */
-@media (max-width: 600px) {
-
-  .heading{
-    gap:100px;
-  }
 }
