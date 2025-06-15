@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>Product Image</title>
@@ -21,23 +22,7 @@
       max-width: 90vw;
       max-height: 70vh;
       border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      border: none;
-      background-color: #4CAF50;
-      color: white;
-      border-radius: 6px;
-      cursor: pointer;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #45a049;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
     .copied-msg {
@@ -46,46 +31,96 @@
       font-size: 14px;
       display: none;
     }
-  </style>
-</head>
-<body>
 
-  <img id="productImage" src="" alt="Product Image" />
-  <button id="copyBtn">Copy & Share on Instagram</button>
-  <div class="copied-msg" id="copiedMsg">Link copied to clipboard!</div>
-
-  <script>
-    // Get image path from URL parameter
-    function getImgFromURL() {
-      const params = new URLSearchParams(window.location.search);
-      const imgPath = params.get('img');
-      return imgPath ? imgPath : 'bouquet/product1.jpg'; // default image
+    #shareButtons {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
-    // Set image
-    const productImage = document.getElementById('productImage');
-    const imgSrc = getImgFromURL();
-    productImage.src = imgSrc;
+    #shareButtons button {
+      padding: 12px 20px;
+      font-size: 16px;
+      background-color: #4267B2;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-    // Copy and redirect
-    const copyBtn = document.getElementById('copyBtn');
-    const copiedMsg = document.getElementById('copiedMsg');
+    #shareButtons button:first-child {
+      background-color: #E1306C;
+      /* Instagram */
+    }
 
-    copyBtn.addEventListener('click', () => {
+
+    #shareButtons button:last-child {
+      background-color: green;
+    }
+
+    #shareButtons button:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+
+<body>
+
+  <p style="font-size: 16px; color: #555; max-width: 300px; margin: 15px auto; text-align: center;">
+    We’re copying the product link to make sharing on Instagram easier!
+  </p>
+
+  <img id="productImage" src="" alt="Product Image" />
+  <div class="copied-msg" id="copiedMsg">Link copied to clipboard! Share below 👇</div>
+  <div id="shareButtons">
+    <button onclick="openInstagram()">Share on Instagram</button>
+    <button onclick="openFacebook()">Share on Facebook</button>
+    <button onclick="openWhatsApp()">Share on Whatapp</button>
+  </div>
+
+  <script>
+    // On page load
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const folder = params.get('folder') || 'bouquet';
+      const img = params.get('img') || 'product1.jpg';
+      const imgPath = `${folder}/${img}`;
+
+      // Set the image
+      const productImage = document.getElementById('productImage');
+      productImage.src = imgPath;
+
+      // Copy link
       const url = window.location.href;
       navigator.clipboard.writeText(url).then(() => {
-        copiedMsg.style.display = 'block';
-
-        setTimeout(() => {
-          copiedMsg.style.display = 'none';
-          // Redirect to Instagram profile
-          window.location.href = 'https://www.instagram.com/editz_aura/';
-        }, 1000);
+        document.getElementById('copiedMsg').style.display = 'block';
+        document.getElementById('shareButtons').style.display = 'flex';
       }).catch(() => {
         alert('Failed to copy the link. Please copy it manually.');
       });
     });
+
+    // Share handlers
+    function openInstagram() {
+      window.open('https://www.instagram.com/direct/inbox/', '_blank');
+    }
+
+    function openFacebook() {
+      const shareURL = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
+      window.open(shareURL, '_blank');
+    }
+
+    function openWhatsApp() {
+      const phoneNumber = '919876543210'; // Replace with your number (no +, no spaces)
+      const message = `Check this out: ${window.location.href}`;
+      const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappURL, '_blank');
+    }
   </script>
 
 </body>
+
 </html>
