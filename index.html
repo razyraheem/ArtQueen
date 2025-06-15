@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,91 +8,173 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header>
-  <div class="heading">
-    <img class="logo-img" src="logo.png" alt="ArtQueen.io Logo">
-  </div>
-  </div>
-</header>
-
-<div class="product" id="product-container">
-  <!-- Products will be inserted here by JavaScript -->
-</div>
-
-<footer style="background: #222; color: #eee; text-align: center; padding: 20px 10px; font-family: Arial, sans-serif; margin-top: 40px;">
-  <p>&copy; 2025 ArtQueen.io | All rights reserved.</p>
-  <div style="margin: 10px 0;">
-    <h3>Follow Us</h3><br>
-    <div>
-      <a href="https://facebook.com/yourpage" target="_blank" style="color: #eee; margin: 0 10px; text-decoration: none;">Facebook</a>
-      <a href="https://instagram.com/editz_aura" target="_blank" style="color: #eee; margin: 0 10px; text-decoration: none;">Instagram</a>
-      <a href="https://youtube.com/@yourpage" target="_blank" style="color: #eee; margin: 0 10px; text-decoration: none;">Youtube</a>
+  <header>
+    <div class="heading">
+      <img class="logo-img" src="logo.png" alt="ArtQueen.io Logo">
+      <h1>ArtQueen.io</h1>
     </div>
+    <div class="contact">
+      <a href="#social">Follow Us</a>
+    </div>
+  </header>
+  <nav class="navi">
+    <a href="#A">Bouquet</a>
+    <a href="#B">Frame</a>
+    <a href="#C">Calligraphy</a>
+    <a href="#D">Flowers</a>
+  </nav>
+
+  <div class="item">
+    <h1 id="A">Bouquet</h1>
+  </div>
+  <div class="product" id="product-container1">
+    <!-- Products will be inserted here by JavaScript -->
+  </div>
+  <div class="item">
+    <h1 Id="B">Frame</h1>
+  </div>
+  <div class="product" id="product-container2">
+    <!- Products will be inserted here by JavaScript -->
+  </div>
+  <div class="item">
+    <h1 Id="C">Calligraphy</h1>
+  </div>
+  <div class="product" id="product-container3">
+    <!- Products will be inserted here by JavaScript -->
+  </div>
+  <div class="item">
+    <h1 id="D">Flowers</h1>
+  </div>
+  <div class="product" id="product-container4">
+    <!- Products will be inserted here by JavaScript -->
   </div>
 
-</footer>
+  <footer
+    style="background: #182126; color: #fcfbfb; text-align: center; padding: 20px 10px; font-family: Arial, sans-serif; margin-top: 40px;">
+    <p>&copy; 2025 ArtQueen.io | All rights reserved.</p><br>
+    <hr>
+    <div style="margin: 10px 0;">
+      <h3>Follow Us</h3>
+      <div class="social-links" id="social">
+        <a href="https://www.youtube.com/yourchannel" target="_blank" aria-label="YouTube">
+          <svg class="icon youtube-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M23.498 6.186a2.833 2.833 0 0 0-1.992-2.004C19.794 3.5 12 3.5 12 3.5s-7.794 0-9.506.682a2.833 2.833 0 0 0-1.992 2.004A29.764 29.764 0 0 0 0 12a29.764 29.764 0 0 0 .502 5.814 2.833 2.833 0 0 0 1.992 2.004C4.206 20.5 12 20.5 12 20.5s7.794 0 9.506-.682a2.833 2.833 0 0 0 1.992-2.004A29.764 29.764 0 0 0 24 12a29.764 29.764 0 0 0-.502-5.814zM9.546 15.568V8.432l6.273 3.568-6.273 3.568z" />
+          </svg>
+        </a>
+        </a>
+        <a href="https://wa.me/919544745463" target="_blank" aria-label="WhatsApp">
+          <img width="30" height="30" src="https://img.icons8.com/ios/50/FFFFFF/whatsapp--v1.png" alt="WhatsApp" />
+        </a>
 
-<script>
-  //product container
-  const productContainer = document.getElementById('product-container');
+        <a href="https://www.instagram.com/yourprofile" target="_blank" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="icon instagram-icon">
+            <path
+              d="M7.75 2h8.5C19.55 2 22 4.43 22 7.75v8.5c0 3.32-2.45 5.75-5.75 5.75h-8.5C4.45 22 2 19.57 2 16.25v-8.5C2 4.43 4.45 2 7.75 2zm0 2C5.68 4 4 5.67 4 7.75v8.5c0 2.08 1.68 3.75 3.75 3.75h8.5c2.07 0 3.75-1.67 3.75-3.75v-8.5c0-2.08-1.68-3.75-3.75-3.75h-8.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6zm4.75-2.5a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5z" />
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/yourprofile" target="_blank" aria-label="Facebook">
+          <h1>f</h1>
+        </a>
+      </div>
 
-  const firstProduct = document.createElement('div');
-  firstProduct.className = 'product1';
-  firstProduct.style.backgroundImage = "url('product1.jpg')";
-  firstProduct.innerHTML = `<a href="product1.html?img=product1.jpg" target="_blank"><h3>Order Now</h3></a>`;
-  productContainer.appendChild(firstProduct);
+    </div>
 
-  for (let i = 100; i <= 160; i++) {
-    const div = document.createElement('div');
-    div.className = 'product1';
-    let ext = 'jpg';
-    if ([100, 141, 146].includes(i)) ext = 'webp';
-    const imgPath = `bouquet/product${i}.${ext}`;
-    div.style.backgroundImage = `url('${imgPath}')`;
-    div.innerHTML = `<a href="product1.html?img=${imgPath}" target="_blank"><h3>Order Now</h3></a>`;
-    productContainer.appendChild(div);
-  }
+  </footer>
 
-   //pop up message
-  window.addEventListener('DOMContentLoaded', () => {
-    if (!sessionStorage.getItem('popupShown')) {
-      const popup = document.createElement('div');
-      popup.style.position = 'fixed';
-      popup.style.top = '0';
-      popup.style.left = '0';
-      popup.style.width = '100%';
-      popup.style.height = '100%';
-      popup.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
-      popup.style.display = 'flex';
-      popup.style.justifyContent = 'center';
-      popup.style.alignItems = 'center';
-      popup.style.zIndex = '9999';
+  <script>
+    // Utility function to create product cards
+    function createProducts(containerId, folder) {
+      const container = document.getElementById(containerId);
 
-      const content = document.createElement('div');
-      content.style.backgroundColor = '#fff';
-      content.style.padding = '20px';
-      content.style.borderRadius = '10px';
-      content.style.textAlign = 'center';
-      content.style.maxWidth = '300px';
+      for (let i = 100; i <= 160; i++) {
+        const div = document.createElement('div');
+        div.className = 'product1';
+        let ext = 'jpg';
+        if ([100, 141, 146].includes(i)) ext = 'webp';
+        const imgPath = `${folder}/product${i}.${ext}`;
+        div.style.backgroundImage = `url('${imgPath}')`;
+        div.innerHTML = `<a href="product1.html?folder=${folder}&img=product${i}.${ext}" target="_blank"><h3>Order Now</h3></a>`;
+        container.appendChild(div);
+      }
+    }
 
-      content.innerHTML = `
+    // Map section ID to folder name
+    const sectionMap = {
+      'product-container1': 'bouquet',
+      'product-container2': 'frame',
+      'product-container3': 'calligraphy',
+      'product-container4': 'flowers'
+    };
+
+    // Set to track loaded sections
+    const loadedSections = new Set();
+
+    // Intersection Observer logic
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !loadedSections.has(entry.target.id)) {
+          const folder = sectionMap[entry.target.id];
+          createProducts(entry.target.id, folder);
+          loadedSections.add(entry.target.id);
+          observer.unobserve(entry.target); // stop observing once loaded
+        }
+      });
+    }, {
+      threshold: 0.2 // Trigger when 20% of section is visible
+    });
+
+    // Start observing each product container
+    Object.keys(sectionMap).forEach(id => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+
+
+
+    //pop up message
+    window.addEventListener('DOMContentLoaded', () => {
+      if (!sessionStorage.getItem('popupShown')) {
+        const popup = document.createElement('div');
+        popup.style.position = 'fixed';
+        popup.style.top = '0';
+        popup.style.left = '0';
+        popup.style.width = '100%';
+        popup.style.height = '100%';
+        popup.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+        popup.style.display = 'flex';
+        popup.style.justifyContent = 'center';
+        popup.style.alignItems = 'center';
+        popup.style.zIndex = '9999';
+
+        const content = document.createElement('div');
+        content.style.backgroundColor = '#fff';
+        content.style.padding = '20px';
+        content.style.borderRadius = '10px';
+        content.style.textAlign = 'center';
+        content.style.maxWidth = '300px';
+
+        content.innerHTML = `
         <p><strong>Welcome!</strong></p>
-        <p>Select the product, click "Order Now", and copy the link to share on Instagram.</p>
+        <p>Select the product, click "Order Now", and click allow to share the link on Instagram.</p>
         <button id="popup-ok" style="padding: 8px 15px; background-color: #333; color: #fff; border: none; border-radius: 5px; cursor: pointer;">OK</button>
       `;
 
-      popup.appendChild(content);
-      document.body.appendChild(popup);
-      sessionStorage.setItem('popupShown', 'true');
-      document.getElementById('popup-ok').addEventListener('click', () => {
-        popup.style.display = 'none';
-      });
-    }
-  });
+        popup.appendChild(content);
+        document.body.appendChild(popup);
+        sessionStorage.setItem('popupShown', 'true');
+        document.getElementById('popup-ok').addEventListener('click', () => {
+          popup.style.display = 'none';
+        });
+      }
+    });
 
-</script>
+  </script>
 
 </body>
+
 </html>
