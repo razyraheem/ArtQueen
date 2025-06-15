@@ -5,80 +5,134 @@
   <meta charset="UTF-8" />
   <title>Product Image</title>
   <style>
-    body {
-      margin: 0;
-      background: #f0f0f0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      font-family: sans-serif;
-      gap: 20px;
-      text-align: center;
-    }
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent; /* remove blue highlight */
+}
 
-    img {
-      max-width: 90vw;
-      max-height: 70vh;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    }
+body {
+  margin: 100px;
+  background: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  gap: 20px;
+  text-align: center;
+  padding: 20px;
+  color: #333;
+  overflow-x: hidden;
+}
 
-    .copied-msg {
-      color: green;
-      font-weight: bold;
-      font-size: 14px;
-      display: none;
-    }
+img {
+  max-width: 92vw;
+  max-height: 65vh;
+  border-radius: 15px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    #shareButtons {
-      display: none;
-      flex-direction: column;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+img:active {
+  transform: scale(0.98);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
 
-    #shareButtons button {
-      padding: 12px 20px;
-      font-size: 16px;
-      background-color: #4267B2;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
+.copied-msg {
+  color: #28a745;
+  font-weight: 600;
+  font-size: 15px;
+  display: none;
+}
 
-    #shareButtons button:first-child {
-      background-color: #E1306C;
-      /* Instagram */
-    }
+#shareButtons {
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 320px;
+}
 
+#shareButtons button {
+  padding: 14px 20px;
+  font-size: 17px;
+  font-weight: 500;
+  background-color: #4267B2;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  outline: none;
+}
 
-    #shareButtons button:last-child {
-      background-color: green;
-    }
+#shareButtons button:focus {
+  outline: none;
+}
 
-    #shareButtons button:hover {
-      opacity: 0.9;
-    }
+#shareButtons button:hover {
+  transform: scale(1.02);
+  opacity: 0.95;
+}
+
+#shareButtons button:first-child {
+  background-color: #E1306C;
+}
+
+#shareButtons button:last-child {
+  background-color: #25D366;
+}
+
+#fallbackInput {
+  padding: 12px;
+  font-size: 15px;
+  width: 90%;
+  max-width: 320px;
+  display: none;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 600px) {
+  img {
+    max-height: 50vh;
+  }
+
+  #shareButtons button {
+    padding: 16px 22px;
+    font-size: 18px;
+  }
+
+  body {
+    gap: 15px;
+    padding: 16px;
+  }
+}
+
   </style>
 </head>
 
 <body>
 
-  <p style="font-size: 16px; color: #555; max-width: 300px; margin: 15px auto; text-align: center;">
+  <p style="font-size: 16px; color: #555; max-width: 300px; margin: 15px auto; margin-top: 100px; text-align: center;">
     We’re copying the product link to make sharing on Instagram easier!
   </p>
 
   <img id="productImage" src="" alt="Product Image" />
   <div class="copied-msg" id="copiedMsg">Link copied to clipboard! Share below 👇</div>
+  <input id="fallbackInput" readonly onclick="this.select();" />
+
   <div id="shareButtons">
     <button onclick="openInstagram()">Share on Instagram</button>
     <button onclick="openFacebook()">Share on Facebook</button>
-    <button onclick="openWhatsApp()">Share on Whatapp</button>
+    <button onclick="openWhatsApp()">Share on WhatsApp</button>
   </div>
 
   <script>
@@ -89,18 +143,54 @@
       const img = params.get('img') || 'product1.jpg';
       const imgPath = `${folder}/${img}`;
 
-      // Set the image
       const productImage = document.getElementById('productImage');
-      productImage.src = imgPath;
+      const copiedMsg = document.getElementById('copiedMsg');
+      const fallbackInput = document.getElementById('fallbackInput');
+      const shareButtons = document.getElementById('shareButtons');
 
-      // Copy link
+      productImage.src = imgPath;
       const url = window.location.href;
-      navigator.clipboard.writeText(url).then(() => {
-        document.getElementById('copiedMsg').style.display = 'block';
-        document.getElementById('shareButtons').style.display = 'flex';
-      }).catch(() => {
-        alert('Failed to copy the link. Please copy it manually.');
-      });
+
+      // Try copying
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(url).then(() => {
+          copiedMsg.style.display = 'block';
+          shareButtons.style.display = 'flex';
+        }).catch(() => {
+          fallbackCopy(url);
+        });
+      } else {
+        fallbackCopy(url);
+      }
+
+      function fallbackCopy(text) {
+        try {
+          const input = document.createElement("input");
+          input.value = text;
+          document.body.appendChild(input);
+          input.select();
+          const success = document.execCommand("copy");
+          document.body.removeChild(input);
+
+          if (success) {
+            copiedMsg.style.display = 'block';
+            shareButtons.style.display = 'flex';
+          } else {
+            showManualCopy(text);
+          }
+        } catch (err) {
+          showManualCopy(text);
+        }
+      }
+
+      function showManualCopy(text) {
+        fallbackInput.style.display = 'block';
+        fallbackInput.value = text;
+        fallbackInput.select();
+        copiedMsg.innerText = "Unable to copy automatically. Long press below to copy 👇";
+        copiedMsg.style.display = 'block';
+        shareButtons.style.display = 'flex';
+      }
     });
 
     // Share handlers
@@ -114,7 +204,7 @@
     }
 
     function openWhatsApp() {
-      const phoneNumber = '919876543210'; // Replace with your number (no +, no spaces)
+      const phoneNumber = '919876543210'; // Your number
       const message = `Check this out: ${window.location.href}`;
       const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
       window.open(whatsappURL, '_blank');
